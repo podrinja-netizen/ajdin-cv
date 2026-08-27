@@ -47,10 +47,14 @@ export function Systems() {
 
                 <p className="measure mt-5 leading-relaxed text-muted">{copy.body}</p>
 
-                <DrawRule className="mt-7" />
-                <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.16em] text-ink">
-                  {copy.stat}
-                </p>
+                {copy.stat && (
+                  <>
+                    <DrawRule className="mt-7" />
+                    <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.16em] text-ink">
+                      {copy.stat}
+                    </p>
+                  </>
+                )}
               </Reveal>
 
               <div className={cn("order-1", flip ? "md:order-1" : "md:order-2")}>

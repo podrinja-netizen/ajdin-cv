@@ -85,12 +85,12 @@ export const SYSTEMS = [
     en: {
       kicker: "Corporate platform + CRM + CMS",
       body: "The whole company runs on it: users, companies, subscriptions, seminars, the magazine, reporting and push notifications. Built from scratch, not assembled from plugins.",
-      stat: "938 companies in the registry",
+      stat: null,
     },
     bs: {
       kicker: "Korporativna platforma + CRM + CMS",
       body: "Cijela firma radi na njoj: korisnici, firme, pretplate, seminari, časopis, izvještaji i push notifikacije. Građeno od nule, nije sklopljeno od plugina.",
-      stat: "938 firmi u registru",
+      stat: null,
     },
   },
   {
@@ -103,12 +103,12 @@ export const SYSTEMS = [
     en: {
       kicker: "Agency site + in-house CRM & CMS",
       body: "Lead management wired straight into Meta Lead Ads, campaign tracking, mail, and an automated site health check. The agency sells what it runs on.",
-      stat: "92 leads in the pipeline",
+      stat: null,
     },
     bs: {
       kicker: "Sajt agencije + vlastiti CRM i CMS",
       body: "Lead management spojen direktno na Meta Lead Ads, praćenje kampanja, mail i automatska provjera sajta. Agencija prodaje ono na čemu i sama radi.",
-      stat: "92 leada u pipelineu",
+      stat: null,
     },
   },
   {
@@ -154,8 +154,18 @@ export const SYSTEMS = [
 ];
 
 export const TIKTOKS = [
-  "https://www.tiktok.com/@grow.387/video/7676466023503154452",
-  "https://www.tiktok.com/@grow.387/video/7674744773495770388",
+  {
+    url: "https://www.tiktok.com/@grow.387/video/7676466023503154452",
+    thumb: "/video/tiktok-1.jpg",
+    en: "Same angle. Same city. Three lights. Three times of day.",
+    bs: "Isti ugao. Isti grad. Tri svjetla. Tri doba dana.",
+  },
+  {
+    url: "https://www.tiktok.com/@grow.387/video/7674744773495770388",
+    thumb: "/video/tiktok-2.jpg",
+    en: "Some say it is a myth. We think it is true.",
+    bs: "Neki kažu da je to mit. A mi vjerujemo da je istina.",
+  },
 ];
 
 export const SECTION_IDS = ["work", "timeline", "systems", "stack", "contact"] as const;
@@ -196,7 +206,7 @@ export const content = {
     },
     manifesto: {
       index: "01 — About",
-      lead: "I left economics one thesis short of a degree. Not a regret — a redirect.",
+      lead: "I left economics at the final thesis. I realised I did not need the degree.",
       body: [
         "It took me until 25 to find the thing I'd actually run at full speed. That thing was marketing. Then it became code. Then it became systems.",
         "I'm at my peak right now, in the middle of the AI era. My only complaint is that a day is too short for what's currently possible.",
@@ -253,9 +263,9 @@ export const content = {
       campaign: "Campaign",
     },
     ai: {
-      index: "05 — AI & Content",
-      title: "I also make the thing that runs in the ad.",
-      body: "Content and graphic design for companies — not just development. I also work with AI video generation. The two clips below are generation samples, not client work.",
+      index: "05 — AI video",
+      title: "Video that was never filmed.",
+      body: "Alongside the code I do content and graphic design for companies. Lately I have been generating video with AI — prompt, generate, cut. Both clips below are generation samples, not client work.",
       watch: "Watch on TikTok",
       videoLabel: "Generation sample · Higgsfield",
     },
@@ -347,7 +357,6 @@ export const content = {
       download: "Download CV (PDF)",
       availability: "Sarajevo · Remote · Open to Dubai / Perth",
       availabilityLabel: "Availability",
-      colophon: "Built from scratch — Next.js, TypeScript, Motion. No template.",
     },
     cmd: {
       placeholder: "Jump to a section, copy the email…",
@@ -407,7 +416,7 @@ export const content = {
     },
     manifesto: {
       index: "01 — O meni",
-      lead: "Napustio sam ekonomiju jedan diplomski prije diplome. Ne kajem se — samo sam skrenuo.",
+      lead: "Napustio sam ekonomiju na diplomskom. Shvatio sam da mi fakultet ne treba.",
       body: [
         "Trebalo mi je 25 godina da nađem ono u što ću ući punim gasom. Prvo je to bio marketing. Onda kod. Onda sistemi.",
         "Sad sam na vrhuncu, usred AI ere. Jedino mi smeta što je dan prekratak za sve što je danas moguće.",
@@ -464,9 +473,9 @@ export const content = {
       campaign: "Kampanja",
     },
     ai: {
-      index: "05 — AI i sadržaj",
-      title: "Radim i ono što se vrti u reklami.",
-      body: "Sadržaj i grafički dizajn za firme — ne samo razvoj. Radim i s AI video generacijom. Dva klipa ispod su primjeri generacije, nisu klijentski radovi.",
+      index: "05 — AI video",
+      title: "Video koji nikad nije sniman.",
+      body: "Pored koda radim i sadržaj i grafički dizajn za firme. U zadnje vrijeme generišem video pomoću AI-ja — prompt, generacija, montaža. Oba klipa ispod su primjeri generacije, nisu klijentski radovi.",
       watch: "Pogledaj na TikToku",
       videoLabel: "Primjer generacije · Higgsfield",
     },
@@ -558,7 +567,6 @@ export const content = {
       download: "Preuzmi CV (PDF)",
       availability: "Sarajevo · Remote · Otvoren za Dubai / Perth",
       availabilityLabel: "Dostupnost",
-      colophon: "Građeno od nule — Next.js, TypeScript, Motion. Bez šablona.",
     },
     cmd: {
       placeholder: "Skoči na sekciju, kopiraj email…",

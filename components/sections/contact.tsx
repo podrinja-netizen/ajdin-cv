@@ -94,14 +94,6 @@ export function Contact() {
             {t.contact.download}
           </a>
         </Reveal>
-
-        <Reveal
-          as="p"
-          delay={0.1}
-          className="mt-20 border-t border-line pt-6 font-mono text-[10px] uppercase tracking-[0.14em] text-muted"
-        >
-          {t.contact.colophon}
-        </Reveal>
       </div>
     </footer>
   );
