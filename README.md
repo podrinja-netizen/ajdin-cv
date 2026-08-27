@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ajdin.grow.ba — interactive CV
 
-## Getting Started
-
-First, run the development server:
+Next.js 15 (App Router) · TypeScript strict · Tailwind v3 · Motion · next-themes.
+Dark by default, light available. EN default, BS toggle. No template, no page builder.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run dev     # http://localhost:3000
+npm run build   # production build (stop `npm run dev` first — they share .next)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Editing the content
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**Everything you'd ever want to change lives in one file: `lib/content.ts`.**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. `IDENTITY` at the top holds the email, phone, Instagram, domain and CV filename.
+2. `WEB_PROJECTS` is the list of live sites — add a `{ domain, en, bs }` object and the row, the number and the hover preview all appear on their own.
+3. `SYSTEMS` is the custom-platform list; set `shot` to an image path in `/public` or `null` for a typographic plate.
+4. `content.en` and `content.bs` hold every line of copy, side by side. Change the string, save — nothing else needs touching.
+5. Both languages must have the same shape; if you add a key to `en`, add it to `bs` too or TypeScript will tell you.
 
-## Learn More
+## Still to fill in (search the code for `TODO:`)
 
-To learn more about Next.js, take a look at the following resources:
+| What | Where |
+|---|---|
+| Real email address | `lib/content.ts` → `IDENTITY.email` |
+| Phone (optional) | `lib/content.ts` → `IDENTITY.phone` — leave `null` to hide the row |
+| REC admin screenshot | `public/projects/rec-admin.png` |
+| Grow CRM screenshot | `public/projects/grow-crm.png` |
+| CV PDF | `public/ajdin-podrinja-cv.pdf` |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Until the screenshots exist, those frames show a labelled "screenshot pending" state rather than a broken image — drop the files in and they appear.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Structure
 
-## Deploy on Vercel
+```
+app/           routes, metadata, OG image, sitemap, robots, /cv print sheet
+components/
+  sections/    one file per movement of the page, in scroll order
+  primitives/  reveal, word reveal, ticker, marquee, browser frame, cursor preview
+  chrome/      custom cursor, scroll progress, dock, ⌘K command palette
+  providers/   theme + language context
+lib/content.ts all copy, both languages
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+`DESIGN.md` records the visual system and the rules the build follows.
+`PRODUCT.md` records the product truth — do not invent past it.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Notes
+
+- Hover previews on the web list come from Microlink's public screenshot API. It is free and cached per URL; if it ever rate-limits, the preview falls back to showing the domain.
+- `/cv` and `Ctrl/⌘+P` produce the same one-page black-on-white sheet from the same content.
+- `⌘K` / `Ctrl+K` opens the command palette.
+- Every animation has a `prefers-reduced-motion` fallback, and the page is fully legible with JavaScript disabled.
