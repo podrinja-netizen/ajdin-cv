@@ -180,7 +180,9 @@
     color: #000 !important;
   }
 
+  /* The sheet owns its own margins (see cv-sheet.tsx), so that a browser
+     Ctrl+P and a headless `--print-to-pdf` produce an identical page. */
   @page {
-    margin: 12mm;
+    margin: 0;
   }
 }

@@ -25,7 +25,7 @@ export function CommandMenu({
   open: boolean;
   onOpenChange: (open: boolean) => void;
 }) {
-  const { t, toggleLang } = useLang();
+  const { t, lang, toggleLang } = useLang();
   const { resolvedTheme, setTheme } = useTheme();
 
   useEffect(() => {
@@ -101,7 +101,12 @@ export function CommandMenu({
                   {t.cmd.copyEmail}
                 </Item>
                 <Item
-                  onSelect={() => run(() => window.open(IDENTITY.cvFile, "_blank"))}
+                  onSelect={() => run(() =>
+                    window.open(
+                      lang === "bs" ? IDENTITY.cvFileBs : IDENTITY.cvFile,
+                      "_blank",
+                    ),
+                  )}
                   icon={<ArrowDownToLine className="size-3.5" />}
                 >
                   {t.cmd.downloadCv}

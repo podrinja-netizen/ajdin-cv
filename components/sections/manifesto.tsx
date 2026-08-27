@@ -1,9 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import { Section } from "@/components/primitives/section";
 import { WordReveal } from "@/components/primitives/word-reveal";
 import { DrawRule, Reveal } from "@/components/primitives/reveal";
 import { useLang } from "@/components/providers/lang-provider";
+import { IDENTITY } from "@/lib/content";
 
 export function Manifesto() {
   const { t } = useLang();
@@ -17,9 +19,33 @@ export function Manifesto() {
 
       <DrawRule className="my-12 md:my-16" />
 
-      <div className="grid gap-8 md:grid-cols-2 md:gap-12">
+      <div className="grid gap-8 md:grid-cols-12 md:gap-10">
+        {/* the portrait — a real face, framed like everything else on the page */}
+        <Reveal className="md:col-span-3">
+          <figure className="max-w-[180px]">
+            <div className="relative aspect-square overflow-hidden border border-line">
+              <Image
+                src={IDENTITY.portrait}
+                alt={`${IDENTITY.name} — ${t.hero.role}`}
+                fill
+                sizes="180px"
+                className="object-cover grayscale transition-[filter] duration-500 hover:grayscale-0"
+              />
+            </div>
+            <figcaption className="label mt-3 leading-[1.7]">
+              <span className="block text-ink">{IDENTITY.name}</span>
+              <span className="block">{IDENTITY.city}</span>
+            </figcaption>
+          </figure>
+        </Reveal>
+
         {t.manifesto.body.map((paragraph, i) => (
-          <Reveal as="p" key={i} delay={i * 0.08} className="measure text-[1.05rem] leading-relaxed text-muted">
+          <Reveal
+            as="p"
+            key={i}
+            delay={0.08 + i * 0.08}
+            className="text-[1.05rem] leading-relaxed text-muted md:col-span-4"
+          >
             {i === 1 ? (
               paragraph
             ) : (

@@ -5,9 +5,15 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-/** Microlink screenshot endpoint — live preview thumbs for the web directory. */
-export function shotUrl(domain: string) {
-  const target = encodeURIComponent(`https://${domain}`);
+/**
+ * Microlink screenshot endpoint — live preview thumbs.
+ * Accepts a bare domain or a full URL (some sites redirect to www./app.).
+ */
+export function shotUrl(domainOrUrl: string) {
+  const href = domainOrUrl.startsWith("http")
+    ? domainOrUrl
+    : `https://${domainOrUrl}`;
+  const target = encodeURIComponent(href);
   return (
     `https://api.microlink.io/?url=${target}` +
     "&screenshot=true&meta=false&embed=screenshot.url" +

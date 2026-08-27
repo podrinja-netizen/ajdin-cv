@@ -8,7 +8,8 @@ import { useLang } from "@/components/providers/lang-provider";
 import { copyText } from "@/lib/clipboard";
 
 export function Contact() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
+  const cv = lang === "bs" ? IDENTITY.cvFileBs : IDENTITY.cvFile;
 
   const onCopy = async () => {
     const ok = await copyText(IDENTITY.email);
@@ -67,7 +68,7 @@ export function Contact() {
 
           {IDENTITY.phone && (
             <Row label={t.contact.phoneLabel}>
-              <a href={`tel:${IDENTITY.phone}`} className="link-underline">
+              <a href={`tel:${IDENTITY.phoneHref}`} className="link-underline">
                 {IDENTITY.phone}
               </a>
             </Row>
@@ -82,7 +83,7 @@ export function Contact() {
 
         <Reveal className="mt-12">
           <a
-            href={IDENTITY.cvFile}
+            href={cv}
             download
             className="group inline-flex items-center gap-3 border border-line px-6 py-4 text-sm text-ink transition-colors duration-300 hover:border-accent hover:text-accent"
           >

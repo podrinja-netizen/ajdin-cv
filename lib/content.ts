@@ -15,13 +15,14 @@ export const IDENTITY = {
   country: "Bosnia and Herzegovina",
   instagram: "https://www.instagram.com/swpodrinja/",
   instagramHandle: "@swpodrinja",
-  // TODO: replace with the real address — used in the contact section, the
-  // command palette, the CV route and the JSON-LD.
-  email: "TODO@grow.ba",
-  // TODO: optional. Leave as null to hide the phone line everywhere.
-  phone: null as string | null,
+  email: "info@grow.ba",
+  /** Leave as null to hide the phone line everywhere. */
+  phone: "+387 62 068 424" as string | null,
+  phoneHref: "+38762068424",
+  portrait: "/ajdin.jpg",
   site: "https://ajdin.grow.ba",
-  cvFile: "/ajdin-podrinja-cv.pdf", // TODO: drop the PDF into /public
+  cvFile: "/ajdin-podrinja-cv.pdf",
+  cvFileBs: "/ajdin-podrinja-cv-bs.pdf",
 };
 
 /** Live sites. One sentence each, never two. */
@@ -76,7 +77,6 @@ export const WEB_PROJECTS = [
 export const SYSTEMS = [
   {
     domain: "rec.ba",
-    // TODO: add the screenshot (REC admin — company search, 938 companies)
     shot: "/projects/rec-admin.png",
     shotAlt: {
       en: "REC admin panel — company search across 938 registered companies",
@@ -89,13 +89,12 @@ export const SYSTEMS = [
     },
     bs: {
       kicker: "Korporativna platforma + CRM + CMS",
-      body: "Cijela firma radi na njoj: korisnici, firme, pretplate, seminari, časopis, izvještaji i push notifikacije. Građeno od nule, ne sklapano od plugina.",
+      body: "Cijela firma radi na njoj: korisnici, firme, pretplate, seminari, časopis, izvještaji i push notifikacije. Građeno od nule, nije sklopljeno od plugina.",
       stat: "938 firmi u registru",
     },
   },
   {
     domain: "grow.ba",
-    // TODO: add the screenshot (Grow CRM — Meta Lead Ads dashboard, 92 leads)
     shot: "/projects/grow-crm.png",
     shotAlt: {
       en: "Grow CRM — Meta Lead Ads dashboard showing 92 captured leads",
@@ -114,8 +113,13 @@ export const SYSTEMS = [
   },
   {
     domain: "navijajuzcarlsberg.ba",
+    url: "https://www.navijajuzcarlsberg.ba",
     shot: null,
-    shotAlt: { en: "", bs: "" },
+    live: true,
+    shotAlt: {
+      en: "navijajuzcarlsberg.ba — live campaign platform",
+      bs: "navijajuzcarlsberg.ba — kampanjska platforma uživo",
+    },
     en: {
       kicker: "Campaign platform — Carlsberg",
       body: "A national campaign platform built to take traffic spikes without blinking: entries, validation, and live standings.",
@@ -123,14 +127,19 @@ export const SYSTEMS = [
     },
     bs: {
       kicker: "Kampanjska platforma — Carlsberg",
-      body: "Nacionalna kampanjska platforma građena da izdrži nalete prometa: prijave, validacija i live rang lista.",
+      body: "Kampanjska platforma za cijelu BiH, građena da izdrži nalete posjeta: prijave, validacija i live rang-lista.",
       stat: "Carlsberg",
     },
   },
   {
     domain: "timeoutzasomersby.ba",
+    url: "https://app.timeoutzasomersby.ba",
     shot: null,
-    shotAlt: { en: "", bs: "" },
+    live: true,
+    shotAlt: {
+      en: "timeoutzasomersby.ba — live prize game platform",
+      bs: "timeoutzasomersby.ba — platforma nagradne igre uživo",
+    },
     en: {
       kicker: "Prize game platform — Somersby",
       body: "Code entry, prize logic, draw mechanics and back-office reporting — the boring parts done properly.",
@@ -246,9 +255,9 @@ export const content = {
     ai: {
       index: "05 — AI & Content",
       title: "I also make the thing that runs in the ad.",
-      body: "Content and graphic design for companies — not just development. Lately that means AI-generated video: script, generation, edit, publish.",
+      body: "Content and graphic design for companies — not just development. I also work with AI video generation. The two clips below are generation samples, not client work.",
       watch: "Watch on TikTok",
-      videoLabel: "AI generated · Higgsfield",
+      videoLabel: "Generation sample · Higgsfield",
     },
     stack: {
       index: "06 — Stack",
@@ -385,7 +394,7 @@ export const content = {
     },
     hero: {
       role: "Marketing i razvoj",
-      claim: "6+ godina pretvaranja marketinga u sisteme — i sistema u prihod.",
+      claim: "6+ godina pretvaram marketing u sisteme, a sisteme u prihod.",
       meta: {
         based: "Lokacija",
         basedValue: "Sarajevo, BiH",
@@ -398,16 +407,16 @@ export const content = {
     },
     manifesto: {
       index: "01 — O meni",
-      lead: "Ostavio sam ekonomiju jedan diplomski prije diplome. Nije kajanje — skretanje.",
+      lead: "Napustio sam ekonomiju jedan diplomski prije diplome. Ne kajem se — samo sam skrenuo.",
       body: [
-        "Trebalo mi je do 25. da nađem stvar u koju ću stvarno ući punim gasom. Ta stvar je bio marketing. Onda je postala kod. Onda su postali sistemi.",
-        "Na vrhuncu sam upravo sada, usred AI ere. Jedina žalba mi je što je dan prekratak za ono što je danas moguće.",
+        "Trebalo mi je 25 godina da nađem ono u što ću ući punim gasom. Prvo je to bio marketing. Onda kod. Onda sistemi.",
+        "Sad sam na vrhuncu, usred AI ere. Jedino mi smeta što je dan prekratak za sve što je danas moguće.",
       ],
       highlight: "sistemi",
     },
     timeline: {
       index: "02 — Put",
-      title: "Odakle dolazi kilometraža.",
+      title: "Kako sam došao dovde.",
       items: [
         {
           year: "2020",
@@ -427,29 +436,29 @@ export const content = {
           year: "2023 — danas",
           org: "REC · Refam Creative Solutions",
           role: "Direktor marketinga i razvoja",
-          body: "Vodim kompletan marketing i digitalni razvoj: web platformu, CRM, CMS, kampanje i kod ispod svega toga. Puno vlasništvo nad sistemom.",
+          body: "Vodim kompletan marketing i digitalni razvoj: web platformu, CRM, CMS, kampanje i kod ispod svega toga. Sistem je u potpunosti na meni.",
           tags: ["Platforma", "CRM", "CMS", "Kampanje"],
         },
         {
           year: "Danas",
           org: "Grow.ba",
           role: "Osnivač",
-          body: "Agencija za web sajtove, software, custom sisteme, CRM, CMS, SaaS, automatizacije i AI API integracije. Građena da nadgradi, a ne da nadpriča.",
+          body: "Agencija za web sajtove, software, custom sisteme, CRM, CMS, SaaS, automatizacije i AI API integracije. Više gradimo nego što pričamo.",
           tags: ["SaaS", "Automatizacije", "AI API"],
         },
       ],
     },
     work: {
       index: "03 — Web",
-      title: "Sajtovi koji su trenutno vani.",
-      note: "Pređi mišem preko reda za live pregled.",
-      more: "i mnogo drugih",
+      title: "Sajtovi koji trenutno rade.",
+      note: "Pređi mišem preko reda i vidiš ga uživo.",
+      more: "i još 40-ak",
       visit: "Otvori",
     },
     systems: {
       index: "04 — Sistemi",
       title: "Platforme, ne sajtovi.",
-      lead: "Svaki od ovih je počeo iz praznog foldera — šema, back office, dozvole, izvještaji. Bez page buildera.",
+      lead: "Svaki je počeo iz praznog foldera — baza, back office, dozvole, izvještaji. Bez page buildera.",
       view: "Live",
       pending: "Screenshot u pripremi",
       campaign: "Kampanja",
@@ -457,9 +466,9 @@ export const content = {
     ai: {
       index: "05 — AI i sadržaj",
       title: "Radim i ono što se vrti u reklami.",
-      body: "Sadržaj i grafički dizajn za firme — ne samo razvoj. U zadnje vrijeme to znači AI video: scenario, generacija, montaža, objava.",
+      body: "Sadržaj i grafički dizajn za firme — ne samo razvoj. Radim i s AI video generacijom. Dva klipa ispod su primjeri generacije, nisu klijentski radovi.",
       watch: "Pogledaj na TikToku",
-      videoLabel: "AI generisano · Higgsfield",
+      videoLabel: "Primjer generacije · Higgsfield",
     },
     stack: {
       index: "06 — Alati",
@@ -510,7 +519,7 @@ export const content = {
           ],
         },
       ],
-      footnote: "I ovo je mali dio onoga što sve znam.",
+      footnote: "I ovo je samo dio onoga što radim.",
     },
     numbers: {
       index: "07 — Brojke",
@@ -531,25 +540,25 @@ export const content = {
     },
     next: {
       index: "09 — Šta dalje",
-      lead: "Širenje mreže ljudi i tržišta izvan Bosne.",
+      lead: "Širim mrežu ljudi i tržišta izvan Bosne.",
       statement:
-        "Grow.ba: broj jedan agencija za web rješenja u regiji u narednih 12 mjeseci.",
+        "Grow.ba: broj jedan agencija za web rješenja u regiji, za 12 mjeseci.",
       highlight: "broj jedan",
     },
     contact: {
       index: "10 — Kontakt",
-      title: "Hajmo graditi.",
+      title: "Hajmo raditi.",
       emailLabel: "Email",
       phoneLabel: "Telefon",
       copy: "Kopiraj",
       copied: "Email kopiran",
       copyFailed: "Kopiranje nije uspjelo — adresa je iznad, označi je ručno.",
       instagram: "Instagram",
-      noLinkedin: "Nema LinkedIna. Radije gradim nego što networkam.",
+      noLinkedin: "Nema LinkedIna. Radije gradim nego se umrežavam.",
       download: "Preuzmi CV (PDF)",
       availability: "Sarajevo · Remote · Otvoren za Dubai / Perth",
       availabilityLabel: "Dostupnost",
-      colophon: "Građeno od nule — Next.js, TypeScript, Motion. Bez templatea.",
+      colophon: "Građeno od nule — Next.js, TypeScript, Motion. Bez šablona.",
     },
     cmd: {
       placeholder: "Skoči na sekciju, kopiraj email…",

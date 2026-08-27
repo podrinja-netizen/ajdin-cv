@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, Printer } from "lucide-react";
 import { IDENTITY, WEB_PROJECTS, SYSTEMS } from "@/lib/content";
@@ -50,15 +51,24 @@ export function CvSheet({ embedded = false }: { embedded?: boolean }) {
       )}
 
       {/* the sheet */}
-      <article className="mx-auto max-w-[210mm] bg-white px-10 py-12 text-[#111] print:max-w-none print:px-0 print:py-0">
+      <article className="mx-auto max-w-[210mm] bg-white px-10 py-12 text-[#111] print:max-w-none print:px-[14mm] print:py-[12mm]">
         <header className="flex flex-wrap items-end justify-between gap-4 border-b-2 border-[#111] pb-4">
-          <div>
-            <h1 className="font-sans text-[2.1rem] font-bold leading-none tracking-[-0.03em]">
-              {IDENTITY.name}
-            </h1>
-            <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.16em] text-[#555]">
-              {t.hero.role}
-            </p>
+          <div className="flex items-center gap-4">
+            <Image
+              src={IDENTITY.portrait}
+              alt={IDENTITY.name}
+              width={64}
+              height={64}
+              className="size-16 shrink-0 rounded-full object-cover grayscale"
+            />
+            <div>
+              <h1 className="font-sans text-[2.1rem] font-bold leading-none tracking-[-0.03em]">
+                {IDENTITY.name}
+              </h1>
+              <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.16em] text-[#555]">
+                {t.hero.role}
+              </p>
+            </div>
           </div>
 
           <ul className="text-right font-mono text-[10px] leading-relaxed tracking-[0.06em] text-[#555]">

@@ -14,10 +14,14 @@
 - Numbers: 6+ years, 50+ clients, 40+ sites shipped, 4 custom systems from scratch.
 - Web work: remex.ba, swordsecurity.ba, arra.ba, edico.ba, hoteluna.ba, strollerica.com, ngv.ba, dentalcorner.ba, energycentar.ba, + 40 more.
 - Systems: rec.ba, grow.ba, navijajuzcarlsberg.ba, timeoutzasomersby.ba.
-- Contact: Instagram @swpodrinja. **Deliberately no LinkedIn** — "No LinkedIn. I'd rather build than network." That is a feature.
+- Contact: info@grow.ba, +387 62 068 424, Instagram @swpodrinja. **Deliberately no LinkedIn** — "No LinkedIn. I'd rather build than network." That is a feature.
 - Open to: Sarajevo · Remote · Dubai · Perth.
 - Goal: Grow.ba = #1 web agency in the region within 12 months.
 
 **Brand commitments (pinned by the user).** Grow identity: orange mark on near-black. Accent #FF5C1A used sparingly. No emoji in UI. No skill percentage bars, no auto-carousels, no cookie/chat/newsletter widgets, no stock illustration, no "passionate about digital marketing" copy, max 3 colors on screen at once.
 
-**Open placeholders (owner must supply).** Email, phone (optional), `/public/projects/rec-admin.png`, `/public/projects/grow-crm.png`, `/public/ajdin-podrinja-cv.pdf`.
+**Assets supplied.** Portrait, both admin screenshots, both PDF CVs.
+
+**Privacy constraint.** The Grow CRM screenshot shows a real Meta Lead Ads pipeline. Lead names and phone numbers are blurred into the image file. Any replacement screenshot must be redacted the same way before it is committed.
+
+**AI video is a sample, not a service.** The two TikTok clips are generation experiments, not client work, and the copy must keep saying so.

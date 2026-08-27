@@ -26,6 +26,13 @@ export function LangProvider({ children }: { children: React.ReactNode }) {
   const [lang, setLangState] = useState<Lang>("en");
 
   useEffect(() => {
+    // ?lang=bs wins over the stored preference, so a link (or a headless
+    // print of /cv?lang=bs) can pin the language without any user state.
+    const asked = new URLSearchParams(window.location.search).get("lang");
+    if (asked === "bs" || asked === "en") {
+      setLangState(asked);
+      return;
+    }
     try {
       const stored = window.localStorage.getItem(STORAGE_KEY);
       if (stored === "bs" || stored === "en") setLangState(stored);

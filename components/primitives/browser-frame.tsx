@@ -3,26 +3,34 @@
 import Image from "next/image";
 import { useRef, useState } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
-import { cn } from "@/lib/utils";
+import { cn, shotUrl } from "@/lib/utils";
 
 /**
- * A thin browser chrome around a real screenshot, tilted and parallaxed on
- * scroll. If the screenshot has not been dropped in yet, the frame holds its
- * shape and says so rather than showing a broken image.
+ * A thin browser chrome around a screenshot, tilted and parallaxed on scroll.
+ *
+ * `src` is a local screenshot (the admin panels). `live` instead pulls a
+ * current screenshot of the site itself, for the campaign platforms where
+ * there is no back office to show. With neither, the frame holds its shape and
+ * says so rather than showing a broken image.
  */
 export function BrowserFrame({
   src,
+  liveUrl,
   alt,
   domain,
   pendingLabel,
   tilt = -1.4,
+  priority = false,
   className,
 }: {
-  src: string | null;
+  src?: string | null;
+  /** Pull a current screenshot of this URL when there is no local `src`. */
+  liveUrl?: string | null;
   alt: string;
   domain: string;
   pendingLabel: string;
   tilt?: number;
+  priority?: boolean;
   className?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -35,8 +43,6 @@ export function BrowserFrame({
   });
   const y = useTransform(scrollYProgress, [0, 1], [26, -26]);
   const rotate = useTransform(scrollYProgress, [0, 1], [tilt, tilt * -0.4]);
-
-  const showImage = src && !failed;
 
   return (
     <motion.div
@@ -60,19 +66,37 @@ export function BrowserFrame({
       </div>
 
       <div className="relative aspect-[16/10] w-full bg-surface">
-        {showImage ? (
+        {/* the domain reads underneath, so a slow or failed shot is never blank */}
+        <span className="absolute inset-0 grid place-items-center px-6 text-center">
+          <span className="label text-muted">
+            {src || liveUrl ? domain : pendingLabel}
+          </span>
+        </span>
+
+        {src && !failed && (
           <Image
             src={src}
             alt={alt}
             fill
             sizes="(max-width: 768px) 100vw, 50vw"
+            priority={priority}
             className="object-cover object-top"
             onError={() => setFailed(true)}
           />
-        ) : (
-          <div className="absolute inset-0 grid place-items-center px-6 text-center">
-            <span className="label text-muted">{pendingLabel}</span>
-          </div>
+        )}
+
+        {!src && liveUrl && !failed && (
+          /* eslint-disable-next-line @next/next/no-img-element --
+             Microlink 302-redirects to the real screenshot and the Next image
+             optimizer cannot follow that. */
+          <img
+            src={shotUrl(liveUrl)}
+            alt={alt}
+            loading="lazy"
+            decoding="async"
+            onError={() => setFailed(true)}
+            className="absolute inset-0 h-full w-full object-cover object-top"
+          />
         )}
       </div>
     </motion.div>

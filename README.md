@@ -18,17 +18,22 @@ npm run build   # production build (stop `npm run dev` first — they share .nex
 4. `content.en` and `content.bs` hold every line of copy, side by side. Change the string, save — nothing else needs touching.
 5. Both languages must have the same shape; if you add a key to `en`, add it to `bs` too or TypeScript will tell you.
 
-## Still to fill in (search the code for `TODO:`)
+## Assets
 
 | What | Where |
 |---|---|
-| Real email address | `lib/content.ts` → `IDENTITY.email` |
-| Phone (optional) | `lib/content.ts` → `IDENTITY.phone` — leave `null` to hide the row |
+| Portrait | `public/ajdin.jpg` |
 | REC admin screenshot | `public/projects/rec-admin.png` |
-| Grow CRM screenshot | `public/projects/grow-crm.png` |
-| CV PDF | `public/ajdin-podrinja-cv.pdf` |
+| Grow CRM screenshot | `public/projects/grow-crm.png` — **client names and phone numbers are blurred into the file itself.** If you ever replace it, redact it again before committing. |
+| CV PDFs | `public/ajdin-podrinja-cv.pdf` (EN) and `-bs.pdf` (BS) |
 
-Until the screenshots exist, those frames show a labelled "screenshot pending" state rather than a broken image — drop the files in and they appear.
+The PDFs are printed from the `/cv` route, so they can never drift from the
+copy. To regenerate after changing `lib/content.ts`:
+
+```bash
+npm run dev                       # terminal 1
+npm run cv:pdf -- http://localhost:3000   # terminal 2
+```
 
 ## Structure
 
@@ -49,5 +54,6 @@ lib/content.ts all copy, both languages
 
 - Hover previews on the web list come from Microlink's public screenshot API. It is free and cached per URL; if it ever rate-limits, the preview falls back to showing the domain.
 - `/cv` and `Ctrl/⌘+P` produce the same one-page black-on-white sheet from the same content.
+- `?lang=bs` on any URL pins the language for that visit — used to print the Bosnian PDF.
 - `⌘K` / `Ctrl+K` opens the command palette.
 - Every animation has a `prefers-reduced-motion` fallback, and the page is fully legible with JavaScript disabled.
