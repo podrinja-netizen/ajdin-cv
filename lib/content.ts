@@ -168,6 +168,44 @@ export const TIKTOKS = [
   },
 ];
 
+/**
+ * Instagram posts. The images are pulled from each post's public /embed/ page
+ * and stored locally (see scripts/fetch-instagram.mjs), so nothing here
+ * depends on a signed CDN URL that expires.
+ */
+export const INSTAGRAM = [
+  {
+    url: "https://www.instagram.com/p/DbNzc92Av0y/",
+    image: "/instagram/ig-1.jpg",
+    en: "Standing in a natural pool below a waterfall",
+    bs: "U prirodnom bazenu ispod vodopada",
+  },
+  {
+    url: "https://www.instagram.com/p/DW1d7lfgovo/",
+    image: "/instagram/ig-2.jpg",
+    en: "On a ridge above Mostar after a climb",
+    bs: "Na grebenu iznad Mostara, poslije uspona",
+  },
+  {
+    url: "https://www.instagram.com/p/DMbFFZytAl4/",
+    image: "/instagram/ig-3.jpg",
+    en: "Rafting a green river in a life vest",
+    bs: "Rafting na zelenoj rijeci",
+  },
+  {
+    url: "https://www.instagram.com/p/DJwAr0xNXud/",
+    image: "/instagram/ig-4.jpg",
+    en: "Seated portrait, indoors",
+    bs: "Portret, u zatvorenom",
+  },
+  {
+    url: "https://www.instagram.com/p/DcjpCC-u64J/",
+    image: "/instagram/ig-5.jpg",
+    en: "At the rocks by a river — you are not living in Bosnia, you are living Bosnia",
+    bs: "Na stijenama kraj rijeke — ne živiš u Bosni, živiš Bosnu",
+  },
+];
+
 export const SECTION_IDS = ["work", "timeline", "systems", "stack", "contact"] as const;
 export type SectionId = (typeof SECTION_IDS)[number];
 
@@ -337,15 +375,20 @@ export const content = {
         { name: "Nature", body: "Mountains, water, movement." },
       ],
     },
+    instagram: {
+      index: "09 — Instagram",
+      title: "Away from the screen.",
+      follow: "Follow on Instagram",
+    },
     next: {
-      index: "09 — What's next",
+      index: "10 — What's next",
       lead: "Expanding the network of people and markets beyond Bosnia.",
       statement:
         "Grow.ba: the number one web agency in the region within 12 months.",
       highlight: "number one",
     },
     contact: {
-      index: "10 — Contact",
+      index: "11 — Contact",
       title: "Let's build something.",
       emailLabel: "Email",
       phoneLabel: "Phone",
@@ -547,15 +590,20 @@ export const content = {
         { name: "Priroda", body: "Planina, voda, kretanje." },
       ],
     },
+    instagram: {
+      index: "09 — Instagram",
+      title: "Kad nisam pred ekranom.",
+      follow: "Zaprati na Instagramu",
+    },
     next: {
-      index: "09 — Šta dalje",
+      index: "10 — Šta dalje",
       lead: "Širim mrežu ljudi i tržišta izvan Bosne.",
       statement:
         "Grow.ba: broj jedan agencija za web rješenja u regiji, za 12 mjeseci.",
       highlight: "broj jedan",
     },
     contact: {
-      index: "10 — Kontakt",
+      index: "11 — Kontakt",
       title: "Hajmo raditi.",
       emailLabel: "Email",
       phoneLabel: "Telefon",

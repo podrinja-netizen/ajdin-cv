@@ -25,6 +25,8 @@ npm run build   # production build (stop `npm run dev` first — they share .nex
 | Portrait | `public/ajdin.jpg` |
 | REC admin screenshot | `public/projects/rec-admin.png` |
 | Grow CRM screenshot | `public/projects/grow-crm.png` — **client names and phone numbers are blurred into the file itself.** If you ever replace it, redact it again before committing. |
+| Instagram posts | `public/instagram/` — pulled by `node scripts/fetch-instagram.mjs <post urls>`, which reads each post's public `/embed/` page in headless Chrome and stores the image locally. Instagram's profile page is login-walled and its oEmbed needs a Meta token, so the per-post embed is the only public route. |
+| TikTok thumbnails | `public/video/` — from TikTok oEmbed, stored locally because their CDN URLs are signed and expire |
 | CV PDFs | `public/ajdin-podrinja-cv.pdf` (EN) and `-bs.pdf` (BS) |
 
 The PDFs are printed from the `/cv` route, so they can never drift from the

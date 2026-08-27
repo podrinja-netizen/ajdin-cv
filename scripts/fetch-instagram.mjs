@@ -61,13 +61,22 @@ for (const [i, url] of urls.entries()) {
     { encoding: "utf8", maxBuffer: 64 * 1024 * 1024, stdio: ["ignore", "pipe", "ignore"] },
   );
 
-  // The post media is the large fbcdn image; profile avatars are the small
-  // scontent .../t51.2885-19/ ones, so prefer t39/t51 media entries by size.
-  const candidates = [...dom.matchAll(/src="(https:\/\/[^"]*(?:fbcdn|cdninstagram)[^"]*)"/g)]
-    .map((m) => m[1].replaceAll("&amp;", "&"))
-    .filter((u) => !u.includes("t51.2885-19") && !u.includes("static.cdninstagram"));
+  // Instagram tags the post's own image with class="EmbeddedMediaImage".
+  // Match that rather than guessing from the URL: avatar paths differ per
+  // account (t51.2885-19 on some, t51.82787-19 on others) and a heuristic
+  // silently grabs the 100x100 profile picture instead.
+  const clean = (u) => u.replaceAll("&amp;", "&");
 
-  const media = candidates[0];
+  let media = dom
+    .match(/<img[^>]*class="[^"]*EmbeddedMediaImage[^"]*"[^>]*src="([^"]+)"/)?.[1];
+
+  if (!media) {
+    // fallback: any fbcdn image that is not a small square avatar crop
+    media = [...dom.matchAll(/src="(https:\/\/[^"]*fbcdn[^"]*)"/g)]
+      .map((m) => m[1])
+      .find((u) => !/s100x100|_s\d{2,3}x\d{2,3}|\.82787-19|\.2885-19/.test(u));
+  }
+  media = media && clean(media);
   if (!media) {
     console.error(`FAILED ${code} — no media found (private or removed post?)`);
     continue;

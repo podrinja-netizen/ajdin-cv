@@ -15,6 +15,7 @@ import { AiContent } from "@/components/sections/ai-content";
 import { Stack } from "@/components/sections/stack";
 import { Numbers } from "@/components/sections/numbers";
 import { Lifestyle } from "@/components/sections/lifestyle";
+import { Instagram } from "@/components/sections/instagram";
 import { WhatsNext } from "@/components/sections/whats-next";
 import { Contact } from "@/components/sections/contact";
 import { useLang } from "@/components/providers/lang-provider";
@@ -46,6 +47,7 @@ export function Site() {
         <Stack />
         <Numbers />
         <Lifestyle />
+        <Instagram />
         <WhatsNext />
         <Contact />
       </main>
